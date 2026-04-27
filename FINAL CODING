@@ -1,0 +1,101 @@
+setcpm(64/4)
+
+let fullA = stack(
+  s("bd ~ ~ bd ~ ~ bd ~").gain(0.48),
+  s("~ ~ cp ~ ~ cp ~ ~").gain(0.18),
+  s("~ hh ~ hh ~ hh ~ hh").gain(0.05),
+
+  note("ab1 ~ eb2 ~ ab1 ~ f2 ~")
+    .s("sine").gain(0.82),
+
+  note("[ab3 c4 eb4] ~ [f3 ab3 c4] ~ [db4 f4 ab4] ~ [eb4 g4 bb4] ~")
+    .s("triangle").slow(2).gain(0.20).room(1),
+
+  note("c5 ~ bb4 ~ ab4 ~ g4 ~")
+    .s("triangle").slow(2).gain(0.07).room(1)
+)
+
+let fullB = stack(
+  s("bd ~ ~ bd ~ bd ~ ~").gain(0.50),
+  s("~ ~ cp ~ ~ ~ cp ~").gain(0.17),
+  s("~ hh ~ ~ hh ~ hh ~").gain(0.045),
+
+  note("ab1 ~ eb2 ~ db2 ~ f2 ~")
+    .s("sine").gain(0.84),
+
+  note("[ab3 c4 eb4] ~ [f3 ab3 c4] ~ [db4 f4 ab4] ~ [eb3 g3 bb3] ~")
+    .s("triangle").slow(2).gain(0.19).room(1),
+
+  note("bb4 ~ c5 ~ ab4 ~ g4 ~")
+    .s("triangle").slow(2).gain(0.065).room(1)
+)
+
+let calm = stack(
+  s("bd ~ ~ ~ ~ ~ ~ ~").gain(0.30),
+  s("~ ~ cp ~ ~ ~ ~ ~").gain(0.11),
+  s("~ ~ ~ hh ~ ~ ~ ~").gain(0.02),
+
+  note("ab1 ~ ~ ~ eb2 ~ ~ ~")
+    .s("sine").gain(0.65),
+
+  note("[ab3 c4 eb4] ~ ~ ~ [f3 ab3 c4] ~ ~ ~")
+    .s("triangle").slow(2).gain(0.22).room(1),
+
+  note("~ ~ c5 ~ ~ ~ bb4 ~")
+    .s("triangle").slow(2).gain(0.05).room(1)
+)
+
+let lift = stack(
+  s("bd ~ ~ ~ bd ~ bd ~").gain(0.52),
+  s("~ ~ cp ~ ~ cp ~ ~").gain(0.19),
+  s("~ hh ~ hh ~ hh ~ hh").gain(0.055),
+
+  note("ab1 ~ eb2 ~ db2 ~ eb2 ~")
+    .s("sine").gain(0.88),
+
+  note("[ab3 c4 eb4] ~ [f3 ab3 c4] ~ [db4 f4 ab4] ~ [eb4 g4 bb4] ~")
+    .s("triangle").slow(2).gain(0.22).room(1),
+
+  note("c5 ~ bb4 ~ ab4 ~ g4 ab4")
+    .s("triangle").slow(2).gain(0.075).room(1)
+)
+
+let bridge = stack(
+  s("~ ~ ~ ~ ~ ~ ~ ~"),
+
+  note("f2 ~ ~ ~ eb2 ~ ~ ~")
+    .s("sine").gain(0.58),
+
+  note("[f3 ab3 c4] ~ ~ ~ [eb3 g3 bb3] ~ ~ ~")
+    .s("triangle").slow(2).gain(0.20).room(1),
+
+  note("~ c5 ~ ~ bb4 ~ ~ ~")
+    .s("triangle").slow(2).gain(0.04).room(1)
+)
+
+let outro = stack(
+  s("bd ~ ~ ~ ~ ~ ~ ~").gain(0.18),
+  s("~ ~ ~ hh ~ ~ ~ ~").gain(0.015),
+
+  note("ab1 ~ ~ ~ eb2 ~ ~ ~")
+    .s("sine").gain(0.52),
+
+  note("[ab3 c4 eb4] ~ ~ ~ [f3 ab3 c4] ~ ~ ~")
+    .s("triangle").slow(2).gain(0.18).room(1)
+)
+
+cat(
+  fullA,
+  fullB,
+  calm,
+  fullA,
+  lift,
+  calm,
+  fullB,
+  lift,
+  bridge,
+  fullA,
+  calm,
+  lift,
+  outro
+)
